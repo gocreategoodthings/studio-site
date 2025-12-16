@@ -93,7 +93,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="mx-auto max-w-[1500px] px-4 pb-40 pt-20 text-white relative overflow-hidden">
+    <main className="mx-auto max-w-[1500px] px-4 md:px-6 pb-40 pt-12 md:pt-20 text-white relative overflow-hidden">
       {/* GLOBAL FX */}
       <div className="bw-grain" />
       <div className="horizontal-noise" />
@@ -108,7 +108,7 @@ export default function HomePage() {
 
       {/* PORTFOLIO */}
       <section id="portfolio">
-        <h1 className="mb-6 text-[42px] font-light tracking-tight reveal-item">
+        <h1 className="mb-6 text-[28px] md:text-[42px] font-light tracking-tight reveal-item">
           Selected Work
         </h1>
 
@@ -173,7 +173,7 @@ export default function HomePage() {
             Services
           </h2>
 
-          <div className="grid grid-cols-2 gap-y-6 gap-x-24 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-24 w-full">
             {[
               "Branding & Identity",
               "Drone Video / Photo",
@@ -197,28 +197,28 @@ export default function HomePage() {
       {/* ABOUT */}
       <section
         id="about"
-        className="mt-20 flex flex-col md:flex-row items-center gap-20 mx-auto max-w-[1100px]"
+        className="mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-20 mx-auto max-w-[1100px]"
       >
         <img
           src="/images/about-portrait.jpg"
-          className="w-[340px] h-[400px] object-cover rounded-md"
+          className="w-full max-w-[340px] h-auto md:h-[400px] object-cover rounded-md"
         />
 
         <div className="max-w-[550px]">
-          <h2 className="text-[26px] font-light mb-4">
+          <h2 className="text-[22px] md:text-[26px] font-light mb-4">
             Go Create Good Things.
           </h2>
 
-          <p className="text-neutral-400 text-[15px] leading-relaxed mb-4">
+          <p className="text-neutral-400 text-[14px] md:text-[15px] leading-relaxed mb-4">
             GCGT is shaped by the belief that every person carries the image of
             God — the imago dei.
           </p>
 
-          <p className="text-neutral-400 text-[15px] leading-relaxed mb-4">
+          <p className="text-neutral-400 text-[14px] md:text-[15px] leading-relaxed mb-4">
             I'm a designer, editor, and videographer/photographer...
           </p>
 
-          <p className="text-neutral-400 text-[15px] leading-relaxed mb-6">
+          <p className="text-neutral-400 text-[14px] md:text-[15px] leading-relaxed mb-6">
             If you want creative that feels sharp and thoughtful — let’s make
             something.
           </p>
