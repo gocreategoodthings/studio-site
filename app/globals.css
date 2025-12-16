@@ -1,26 +1,278 @@
 @import "tailwindcss";
 
+/* Theme */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #000;
+  --foreground: #f2f2f2;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  scroll-snap-type: y proximity;
+}
+
+/* Reveal Animation */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.9s ease-out,
+    transform 0.9s cubic-bezier(0.25, 0.1, 0.1, 1);
+}
+
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Marquee */
+@keyframes rail-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.rail-motion {
+  width: max-content;
+  animation: rail-marquee 75s linear infinite;
+  will-change: transform;
+}
+
+/* Services Reveal */
+.service-item {
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(4px);
+  transition: all 0.7s ease-out;
+  position: relative;
+}
+
+.service-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  filter: blur(0) !important;
+}
+
+/* underline */
+.service-item::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background: white;
+  transition: width 0.4s ease;
+}
+
+.service-item:hover {
+  color: white;
+}
+
+.service-item:hover::after {
+  width: 100%;
+}
+
+/* ---------------------------------------------------------
+   GLOBAL GRITTY B/W VINTAGE FILM EFFECTS
+--------------------------------------------------------- */
+
+/* Main Grain Overlay */
+.bw-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.20;
+  background-image: url("/images/grain.png");
+  background-size: cover;
+  mix-blend-mode: overlay;
+  animation: grainMove 2.8s steps(8) infinite;
+}
+
+@keyframes grainMove {
+  0% { transform: translate(0, 0) scale(1); }
+  20% { transform: translate(-12px, 8px) scale(1.02); }
+  40% { transform: translate(10px, -14px) scale(1.01); }
+  60% { transform: translate(-8px, 10px) scale(1.03); }
+  80% { transform: translate(14px, -6px) scale(1.02); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Horizontal Noise Streaks */
+.horizontal-noise {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255,255,255,0.015) 0px,
+    rgba(255,255,255,0.015) 1px,
+    transparent 2px
+  );
+  opacity: 0.25;
+  mix-blend-mode: soft-light;
+  animation: noiseFlicker 0.5s infinite alternate;
+}
+
+@keyframes noiseFlicker {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.32; }
+  100% { opacity: 0.18; }
+}
+
+/* Micro Camera Shake */
+@keyframes camShake {
+  0%, 100% { transform: translate(0px, 0px); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
+}
+
+/* Chromatic offset */
+.chromatic-aberration {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.08;
+  filter: blur(1px);
+  background:
+    url("/images/grain.png") center/cover no-repeat;
+  transform: translate(1px, -1px);
+}
+
+/* Strong Vignette */
+.vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0) 45%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+/* ---------------------------------------------------------
+   HERO: GRITTY FILM LIFT (VERTICAL GRAIN RISE)
+--------------------------------------------------------- */
+
+.hero-grit {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-film-lift {
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/grain.png");
+  background-size: cover;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+  animation:
+    heroGrainRise 6s linear infinite,
+    heroGrainFlicker 0.35s infinite steps(2);
+}
+
+@keyframes heroGrainRise {
+  0% { transform: translateY(20px); }
+  100% { transform: translateY(-40px); }
+}
+
+@keyframes heroGrainFlicker {
+  0% { opacity: 0.16; }
+  50% { opacity: 0.22; }
+  100% { opacity: 0.14; }
+}
+
+/* Parallax */
+.parallax {
+  transform: translateZ(0);
+  perspective: 1200px;
+}
+
+.parallax:hover .rail-motion {
+  transform: translateZ(-40px) scale(1.02);
+}
+
+.footer-link {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  opacity: 0.55;
+}
+
+.footer-link:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* ----------------------------------------------
+   CINEMATIC HERO LINE
+---------------------------------------------- */
+
+.cinematic-line {
+  font-size: 26px;
+  font-weight: 300;
+  color: #bfbfbf;
+  opacity: 0;
+  animation: cineSoft 1.4s ease-out forwards;
+  transform: translateY(6px);
+  letter-spacing: .5px;
+}
+
+.cinematic-line {
+  animation-delay: .15s;
+}
+
+@keyframes cineSoft {
+  0%   { opacity: 0; transform: translateY(10px); }
+  60%  { opacity: .8; }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.footer-icon {
+  opacity: 0.55;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.footer-icon:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.project-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .8s ease-out, transform .8s ease-out;
+}
+
+.project-reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.backdrop-glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
