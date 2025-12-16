@@ -231,13 +231,19 @@ html {
 ---------------------------------------------- */
 
 .cinematic-line {
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 300;
   color: #bfbfbf;
   opacity: 0;
   animation: cineSoft 1.4s ease-out forwards;
   transform: translateY(6px);
   letter-spacing: .5px;
+}
+
+@media (min-width: 768px) {
+  .cinematic-line {
+    font-size: 26px;
+  }
 }
 
 .cinematic-line {

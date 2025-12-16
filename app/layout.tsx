@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Figtree } from "next/font/google";
 import HeaderBar from "./components/HeaderBar";
@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   description: "Design · Editing · Photo/Video",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -21,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${figtree.className} bg-black text-white pt-20`}
+        className={`${figtree.className} bg-black text-white pt-16 md:pt-20`}
       >
         <HeaderBar />
         {children}
