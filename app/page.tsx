@@ -34,11 +34,11 @@ const projects = [
     year: "2025",
   },
   {
-    title: "GCGT Launch Spot",
-    role: "Direction · Edit · Color",
-    slug: "gcgt-launch-spot",
-    img: "/images/gcgt-launch-cover.png",
-    year: "2025",
+  title: "Genesis",
+  role: "Editorial Cut · Edit · Sound",
+  slug: "genesis",
+  img: "/images/genesis-cover.jpg",
+  year: "2025",
   },
   {
     title: "Ashton Gray – Commercial Real Estate Marketing",
