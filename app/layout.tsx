@@ -12,12 +12,6 @@ export const metadata: Metadata = {
   title: "Brady Hudson",
   description: "Design · Editing · Photo/Video",
   manifest: "/manifest.json",
-  themeColor: "#000000",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
