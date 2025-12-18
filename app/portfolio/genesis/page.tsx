@@ -68,7 +68,7 @@ export default function GenesisPage() {
       <div className="relative project-reveal rounded-md overflow-hidden border border-white/10 hover:border-white/20 transition max-h-[76vh]">
         <video
           ref={videoRef}
-          src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+          src="https://res.cloudinary.com/dgeyxnh9i/video/upload/q_auto,f_auto/Genesis_optimized_dliqsw.mp4"
           autoPlay
           loop
           playsInline
