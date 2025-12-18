@@ -72,7 +72,7 @@ export default function GenesisPage() {
           autoPlay
           loop
           playsInline
-          className="w-full h-full object-cover object-center scale-[1.02] bg-black"
+          className="w-full h-full object-cover object-center bg-black"
         />
 
         {/* Sound toggle */}
@@ -87,17 +87,17 @@ export default function GenesisPage() {
       {/* Editorial Copy */}
       <div className="mt-20 max-w-[680px] space-y-5 text-[15px] leading-relaxed text-neutral-400 project-reveal">
         <p>
-          An editorial sequence built around restraint — allowing pacing,
+          An editorial sequence built around restraint, allowing pacing,
           silence, and composition to carry meaning without overt direction.
         </p>
 
         <p>
           The structure follows the opening movement of Genesis, progressing from
-          origin, to form, to purpose, using scripture as rhythm rather than narration.
+          origin to form to purpose, using scripture as rhythm rather than narration.
         </p>
 
         <p className="text-neutral-500 text-[13px] leading-relaxed">
-          Scripture excerpts referenced from Genesis 1:1, Genesis 1:26–27, and
+          Scripture excerpts referenced from Genesis 1:1, Genesis 1:26 to 27, and
           Genesis 1:28. Footage sourced from licensed stock. Edit and sound design
           by Brady Hudson.
         </p>
