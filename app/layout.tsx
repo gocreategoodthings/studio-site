@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Figtree } from "next/font/google";
 import HeaderBar from "./components/HeaderBar";
+import SmoothScroll from "./components/SmoothScroll";
 
 const figtree = Figtree({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"], 
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -20,11 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${figtree.className} bg-black text-white pt-20`}
-      >
-        <HeaderBar />
-        {children}
+      <body className={`${figtree.className} bg-black text-white pt-20`}>
+        <SmoothScroll>
+          <HeaderBar />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

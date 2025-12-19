@@ -4,12 +4,22 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
+/* ---------------------------------------------
+   PROJECT DATA
+--------------------------------------------- */
 const projects = [
   {
     title: "Commercial Real Estate Drone Reel",
     role: "Drone Photography · Videography · Edit · Color",
     slug: "agok-classen-norman",
     img: "/images/agok-cover.jpg",
+    year: "2025",
+  },
+  {
+    title: "Genesis",
+    role: "Editorial Cut · Edit · Sound",
+    slug: "genesis",
+    img: "/images/genesis-cover.jpg",
     year: "2025",
   },
   {
@@ -34,13 +44,6 @@ const projects = [
     year: "2025",
   },
   {
-  title: "Genesis",
-  role: "Editorial Cut · Edit · Sound",
-  slug: "genesis",
-  img: "/images/genesis-cover.jpg",
-  year: "2025",
-  },
-  {
     title: "Ashton Gray – Commercial Real Estate Marketing",
     role: "Brand · Web · Content",
     slug: "ashton-gray",
@@ -55,7 +58,9 @@ export default function HomePage() {
   const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const serviceRefs = useRef<(HTMLParagraphElement | null)[]>([]);
 
-  // CARD REVEAL (continuous)
+  /* ---------------------------------------------
+     CARD REVEAL
+  --------------------------------------------- */
   useEffect(() => {
     const idle = requestIdleCallback(() => {
       const observer = new IntersectionObserver(
@@ -68,7 +73,7 @@ export default function HomePage() {
             }
           });
         },
-        { threshold: 0.2 }
+        { threshold: 0.18 }
       );
 
       itemRefs.current.forEach(el => el && observer.observe(el));
@@ -77,7 +82,9 @@ export default function HomePage() {
     return () => cancelIdleCallback(idle);
   }, []);
 
-  // SERVICES REVEAL
+  /* ---------------------------------------------
+     SERVICES REVEAL
+  --------------------------------------------- */
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries =>
@@ -85,7 +92,7 @@ export default function HomePage() {
           if (entry.isIntersecting)
             entry.target.classList.add("service-visible");
         }),
-      { threshold: 0.25 }
+      { threshold: 0.3 }
     );
 
     serviceRefs.current.forEach(el => el && observer.observe(el));
@@ -93,68 +100,86 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main className="mx-auto max-w-[1500px] px-4 pb-40 pt-20 text-white relative overflow-hidden">
+    <main className="mx-auto max-w-[1500px] px-4 sm:px-6 pb-32 sm:pb-40 pt-16 sm:pt-20 text-white relative overflow-hidden">
       {/* GLOBAL FX */}
       <div className="bw-grain" />
       <div className="horizontal-noise" />
       <div className="chromatic-aberration" />
       <div className="vignette" />
 
-      {/* HERO */}
-      <div className="relative w-full flex justify-center items-center h-[28vh] mb-4 hero-grit">
+      {/* ---------------------------------------------
+         HERO (mobile tuned)
+      --------------------------------------------- */}
+      <div className="relative w-full flex flex-col justify-center items-center h-[28vh] sm:h-[32vh] mb-10 sm:mb-12 hero-grit text-center">
         <div className="hero-film-lift" />
-        <p className="cinematic-line z-[2]">go create good things.</p>
+
+        <p className="cinematic-line z-[2] mb-2 sm:mb-3 text-[22px] sm:text-[26px]">
+          go create good things.
+        </p>
+
+        <p className="z-[2] text-[12px] sm:text-[13px] tracking-wide text-neutral-500 px-4">
+          Design · Editing · Visual Identity
+        </p>
       </div>
 
-      {/* PORTFOLIO */}
+      {/* ---------------------------------------------
+         PORTFOLIO
+      --------------------------------------------- */}
       <section id="portfolio">
-        <h1 className="mb-6 text-[42px] font-light tracking-tight reveal-item">
+        <h1 className="mb-5 sm:mb-6 text-[34px] sm:text-[42px] font-light tracking-tight reveal-item">
           Selected Work
         </h1>
 
-        <p className="mb-20 max-w-[540px] text-[15px] text-neutral-400 leading-relaxed reveal-item">
+        <p className="mb-14 sm:mb-16 max-w-[540px] text-[14px] sm:text-[15px] text-neutral-400 leading-relaxed reveal-item">
           Cinematic pieces and visuals crafted for brands, products, and people
           who want their story to feel considered and intentional.
         </p>
 
-        <div id="project-anchor" className="scroll-mt-[55vh]" />
+        <div id="project-anchor" className="scroll-mt-[45vh] sm:scroll-mt-[55vh]" />
 
-        {/* CAROUSEL */}
+        {/* ---------------------------------------------
+           CAROUSEL (mobile pacing)
+        --------------------------------------------- */}
         <div className="relative w-full overflow-hidden hide-scrollbar parallax [content-visibility:auto]">
-          <div className="rail-motion flex gap-16 py-2">
+          <div
+            className="rail-motion flex gap-12 sm:gap-16 py-2"
+            style={{ animationDuration: "95s" }}
+          >
             {loop.map((project, i) => (
               <Link
                 key={`${project.slug}-${i}`}
                 href={`/portfolio/${project.slug}`}
-                ref={el => { itemRefs.current[i] = el; }}
-                className="reveal-item w-[260px] flex-shrink-0 group"
+                ref={el => {
+                  itemRefs.current[i] = el;
+                }}
+                className="reveal-item w-[220px] sm:w-[260px] flex-shrink-0 group"
               >
-                <div className="h-[300px] w-full overflow-hidden rounded-sm border border-white/5 group-hover:border-white/20 transition">
+                <div className="h-[260px] sm:h-[300px] w-full overflow-hidden rounded-sm border border-white/5 group-hover:border-white/20 transition">
                   <Image
                     src={project.img}
                     alt={project.title}
                     width={520}
                     height={600}
-                    sizes="260px"
+                    sizes="(max-width: 640px) 220px, 260px"
                     quality={95}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-all duration-[1200ms] ease-[cubic-bezier(0.28,0.07,0.12,1)] group-hover:scale-[1.05] group-hover:opacity-90"
+                    className="h-full w-full object-cover transition-all duration-[1400ms] ease-[cubic-bezier(0.28,0.07,0.12,1)] group-hover:scale-[1.04] group-hover:opacity-90"
                   />
                 </div>
 
-                <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-500 mt-4">
+                <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-neutral-500 mt-3 sm:mt-4">
                   {project.year}
                 </p>
 
-                <h3 className="mt-1 text-[15px] font-light leading-tight">
+                <h3 className="mt-1 text-[14px] sm:text-[15px] font-light leading-tight">
                   {project.title}
                 </h3>
 
-                <p className="text-[12px] text-neutral-500 mt-1 leading-relaxed">
+                <p className="text-[11px] sm:text-[12px] text-neutral-500 mt-1 leading-relaxed">
                   {project.role}
                 </p>
 
-                <span className="mt-3 inline-flex items-center gap-2 text-[11px] uppercase tracking-wide text-neutral-300 group-hover:text-white transition">
+                <span className="mt-2 sm:mt-3 inline-flex items-center gap-2 text-[10px] sm:text-[11px] uppercase tracking-wide text-neutral-300 group-hover:text-white transition">
                   View{" "}
                   <span className="inline-block text-sm transition group-hover:translate-x-[4px]">
                     ↗
@@ -166,14 +191,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section className="mt-44 mb-36 flex justify-center w-full">
+      {/* ---------------------------------------------
+         SERVICES (mobile stacked)
+      --------------------------------------------- */}
+      <section className="mt-28 sm:mt-36 mb-28 sm:mb-32 flex justify-center w-full">
         <div className="w-full max-w-[900px] flex flex-col items-start">
-          <h2 className="text-[22px] font-light mb-14 tracking-wide w-full">
+          <h2 className="text-[20px] sm:text-[22px] font-light mb-8 sm:mb-10 tracking-wide w-full">
             Services
           </h2>
 
-          <div className="grid grid-cols-2 gap-y-6 gap-x-24 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 sm:gap-y-5 sm:gap-x-20 w-full">
             {[
               "Branding & Identity",
               "Drone Video / Photo",
@@ -184,8 +211,10 @@ export default function HomePage() {
             ].map((service, i) => (
               <p
                 key={i}
-                ref={el => { serviceRefs.current[i] = el; }}
-                className="service-item text-[15px] text-neutral-300"
+                ref={el => {
+                  serviceRefs.current[i] = el;
+                }}
+                className="service-item text-[14px] sm:text-[15px] text-neutral-300"
               >
                 {service}
               </p>
@@ -194,36 +223,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ABOUT */}
+      {/* ---------------------------------------------
+         ABOUT (mobile first)
+      --------------------------------------------- */}
       <section
         id="about"
-        className="mt-20 flex flex-col md:flex-row items-center gap-20 mx-auto max-w-[1100px]"
+        className="mt-12 sm:mt-20 flex flex-col md:flex-row items-center gap-12 sm:gap-20 mx-auto max-w-[1100px]"
       >
         <img
           src="/images/about-portrait.jpg"
-          className="w-[340px] h-[400px] object-cover rounded-md"
+          className="w-[260px] sm:w-[340px] h-[320px] sm:h-[400px] object-cover rounded-md"
         />
 
-        <div className="max-w-[550px]">
-          <h2 className="text-[26px] font-light mb-4">
+        <div className="max-w-[550px] text-center md:text-left">
+          <h2 className="text-[24px] sm:text-[26px] font-light mb-4">
             Go Create Good Things.
           </h2>
 
-          <p className="text-neutral-400 text-[15px] leading-relaxed mb-4">
+          <p className="text-neutral-400 text-[14px] sm:text-[15px] leading-relaxed mb-4">
             GCGT is shaped by the belief that every person carries the image of
             God — the imago dei.
           </p>
 
-          <p className="text-neutral-400 text-[15px] leading-relaxed mb-4">
+          <p className="text-neutral-400 text-[14px] sm:text-[15px] leading-relaxed mb-4">
             I'm a designer, editor, and videographer/photographer...
           </p>
 
-          <p className="text-neutral-400 text-[15px] leading-relaxed mb-6">
+          <p className="text-neutral-400 text-[14px] sm:text-[15px] leading-relaxed mb-6">
             If you want creative that feels sharp and thoughtful — let’s make
             something.
           </p>
 
-          <div className="flex gap-6 text-[13px]">
+          <div className="flex gap-6 text-[13px] justify-center md:justify-start">
             <a href="/#project-anchor" className="hover:text-white transition">
               View portfolio →
             </a>
@@ -234,10 +265,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="mt-40 mb-10 w-full flex flex-col items-center text-neutral-500 text-[13px] gap-4">
+      {/* ---------------------------------------------
+         FOOTER
+      --------------------------------------------- */}
+      <footer className="mt-32 sm:mt-40 mb-8 sm:mb-10 w-full flex flex-col items-center text-neutral-500 text-[12px] sm:text-[13px] gap-4">
         <div className="flex gap-6 items-center">
-          {/* Instagram */}
           <a
             href="https://instagram.com/gocreategoodthings"
             target="_blank"
@@ -260,7 +292,6 @@ export default function HomePage() {
             </svg>
           </a>
 
-          {/* LinkedIn */}
           <a
             href="https://linkedin.com/in/bradyhudson"
             target="_blank"
@@ -276,7 +307,6 @@ export default function HomePage() {
             </svg>
           </a>
 
-          {/* Email */}
           <a href="mailto:gocreategoodthings@gmail.com" className="footer-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path
