@@ -59,10 +59,10 @@ export default function HomePage() {
   const serviceRefs = useRef<(HTMLParagraphElement | null)[]>([]);
 
   /* ---------------------------------------------
-     CARD REVEAL
+     CARD REVEAL (Safari-safe)
   --------------------------------------------- */
   useEffect(() => {
-    const idle = requestIdleCallback(() => {
+    const run = () => {
       const observer = new IntersectionObserver(
         entries => {
           entries.forEach(entry => {
@@ -77,9 +77,15 @@ export default function HomePage() {
       );
 
       itemRefs.current.forEach(el => el && observer.observe(el));
-    });
+    };
 
-    return () => cancelIdleCallback(idle);
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      const idle = (window as any).requestIdleCallback(run);
+      return () =>
+        (window as any).cancelIdleCallback?.(idle);
+    } else {
+      run();
+    }
   }, []);
 
   /* ---------------------------------------------
@@ -89,8 +95,9 @@ export default function HomePage() {
     const observer = new IntersectionObserver(
       entries =>
         entries.forEach(entry => {
-          if (entry.isIntersecting)
+          if (entry.isIntersecting) {
             entry.target.classList.add("service-visible");
+          }
         }),
       { threshold: 0.3 }
     );
@@ -107,9 +114,7 @@ export default function HomePage() {
       <div className="chromatic-aberration" />
       <div className="vignette" />
 
-      {/* ---------------------------------------------
-         HERO (mobile tuned)
-      --------------------------------------------- */}
+      {/* HERO */}
       <div className="relative w-full flex flex-col justify-center items-center h-[28vh] sm:h-[32vh] mb-10 sm:mb-12 hero-grit text-center">
         <div className="hero-film-lift" />
 
@@ -122,9 +127,7 @@ export default function HomePage() {
         </p>
       </div>
 
-      {/* ---------------------------------------------
-         PORTFOLIO
-      --------------------------------------------- */}
+      {/* PORTFOLIO */}
       <section id="portfolio">
         <h1 className="mb-5 sm:mb-6 text-[34px] sm:text-[42px] font-light tracking-tight reveal-item">
           Selected Work
@@ -137,9 +140,6 @@ export default function HomePage() {
 
         <div id="project-anchor" className="scroll-mt-[45vh] sm:scroll-mt-[55vh]" />
 
-        {/* ---------------------------------------------
-           CAROUSEL (mobile pacing)
-        --------------------------------------------- */}
         <div className="relative w-full overflow-hidden hide-scrollbar parallax [content-visibility:auto]">
           <div
             className="rail-motion flex gap-12 sm:gap-16 py-2"
@@ -191,16 +191,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------------------------------------------
-         SERVICES (mobile stacked)
-      --------------------------------------------- */}
+      {/* SERVICES */}
       <section className="mt-28 sm:mt-36 mb-28 sm:mb-32 flex justify-center w-full">
         <div className="w-full max-w-[900px] flex flex-col items-start">
           <h2 className="text-[20px] sm:text-[22px] font-light mb-8 sm:mb-10 tracking-wide w-full">
             Services
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 sm:gap-y-5 sm:gap-x-20 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 sm:gap-x-20 w-full">
             {[
               "Branding & Identity",
               "Drone Video / Photo",
@@ -223,9 +221,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------------------------------------------
-         ABOUT (mobile first)
-      --------------------------------------------- */}
+      {/* ABOUT */}
       <section
         id="about"
         className="mt-12 sm:mt-20 flex flex-col md:flex-row items-center gap-12 sm:gap-20 mx-auto max-w-[1100px]"
@@ -242,15 +238,15 @@ export default function HomePage() {
 
           <p className="text-neutral-400 text-[14px] sm:text-[15px] leading-relaxed mb-4">
             GCGT is shaped by the belief that every person carries the image of
-            God — the imago dei.
+            God, the imago dei.
           </p>
 
           <p className="text-neutral-400 text-[14px] sm:text-[15px] leading-relaxed mb-4">
-            I'm a designer, editor, and videographer/photographer...
+            I'm a designer, editor, and videographer and photographer.
           </p>
 
           <p className="text-neutral-400 text-[14px] sm:text-[15px] leading-relaxed mb-6">
-            If you want creative that feels sharp and thoughtful — let’s make
+            If you want creative that feels sharp and thoughtful, let’s make
             something.
           </p>
 
@@ -265,9 +261,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------------------------------------------
-         FOOTER
-      --------------------------------------------- */}
+      {/* FOOTER */}
       <footer className="mt-32 sm:mt-40 mb-8 sm:mb-10 w-full flex flex-col items-center text-neutral-500 text-[12px] sm:text-[13px] gap-4">
         <div className="flex gap-6 items-center">
           <a
