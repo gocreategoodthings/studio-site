@@ -242,7 +242,7 @@ export default function HomePage() {
           </p>
 
           <p className="text-neutral-400 text-[14px] sm:text-[15px] leading-relaxed mb-4">
-            I'm a designer, editor, and videographer and photographer.
+            I'm a designer, editor, and a creator.
           </p>
 
           <p className="text-neutral-400 text-[14px] sm:text-[15px] leading-relaxed mb-6">
