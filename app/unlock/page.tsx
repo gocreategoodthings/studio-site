@@ -7,7 +7,7 @@ export default function UnlockPage() {
 
   const submit = () => {
     if (key === process.env.NEXT_PUBLIC_SITE_KEY) {
-      document.cookie = "site_access=granted; path=/";
+      document.cookie = "site_access=granted; path=/; domain=.gocreategoodthings.com";
       window.location.href = "/";
     } else {
       alert("Incorrect key");
