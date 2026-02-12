@@ -22,15 +22,15 @@ export default function AGIFOriginsStory() {
         </p>
       </div>
 
-      {/* Video */}
+      {/* Vimeo Video */}
       <div className="relative w-full aspect-video mb-20 rounded-md overflow-hidden border border-white/10">
-        <video
-          controls
-          poster="/images/agif-origins-thumb.jpg"
-          className="w-full h-full object-cover"
-        >
-          <source src="/video/agif-origins-story.mp4" type="video/mp4" />
-        </video>
+        <iframe
+          src="https://player.vimeo.com/video/1164240185?badge=0&autopause=0&player_id=0&app_id=58479"
+          className="w-full h-full"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+          title="AGIF Origins Story"
+        />
       </div>
 
       {/* Project Detail */}
