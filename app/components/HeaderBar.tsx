@@ -4,12 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function HeaderBar() {
-  const [time, setTime] = useState("");
-
-useEffect(() => {
-  const updateTime = () => {
+  const getTime = () => {
     const now = new Date();
-    setTime(
+    return (
       now.toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -17,13 +14,19 @@ useEffect(() => {
     );
   };
 
-  updateTime();
-  const interval = setInterval(updateTime, 60000);
-  return () => clearInterval(interval);
-}, []);
+  const [time, setTime] = useState(getTime);
+
+  useEffect(() => {
+    const updateTime = () => {
+      setTime(getTime());
+    };
+
+    const interval = setInterval(updateTime, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-        <header className="w-full bg-black/40 backdrop-blur-md">
+    <header className="w-full bg-black/40 backdrop-blur-md">
       <div className="max-w-[1800px] mx-auto px-10 py-6 flex items-center gap-6 text-neutral-200">
 
         {/* LEFT — CTA */}
@@ -48,22 +51,22 @@ useEffect(() => {
         {/* RIGHT LINE */}
         <div className="flex-1 h-px bg-white/20"></div>
 
-{/* RIGHT — NAV + CLOCK */}
-<div className="flex items-center gap-8 whitespace-nowrap">
+        {/* RIGHT — NAV + CLOCK */}
+        <div className="flex items-center gap-8 whitespace-nowrap">
 
-  {/* SCROLL TO PORTFOLIO */}
-  <Link href="/#portfolio" className="hover:text-white transition text-sm">
-    Portfolio
-  </Link>
+          <Link href="/#portfolio" className="hover:text-white transition text-sm">
+            Portfolio
+          </Link>
 
-  {/* SCROLL TO ABOUT */}
-  <Link href="/#about" className="hover:text-white transition text-sm">
-    About
-  </Link>
+          <Link href="/#about" className="hover:text-white transition text-sm">
+            About
+          </Link>
 
-  <span className="text-neutral-400 text-sm">{time}</span>
-</div>
+          <span className="text-neutral-400 text-sm w-[70px] text-right inline-block">
+            {time}
+          </span>
 
+        </div>
       </div>
     </header>
   );

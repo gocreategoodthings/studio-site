@@ -17,7 +17,7 @@ const projects = [
   },
   {
     title: "Genesis",
-    role: "Editorial Cut · Edit · Sound",
+    role: "Editorial Cut · Edit · Concept",
     slug: "genesis",
     img: "/images/genesis-cover.jpg",
     year: "2025",
@@ -57,7 +57,6 @@ const loop = [...projects, ...projects];
 export default function HomePage() {
   const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
-  /* CARD REVEAL */
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => {
@@ -78,21 +77,24 @@ export default function HomePage() {
 
   return (
     <main className="mx-auto max-w-[1500px] px-4 sm:px-6 pb-40 pt-16 sm:pt-20 text-white relative overflow-hidden">
+      
       <div className="bw-grain" />
       <div className="horizontal-noise" />
       <div className="chromatic-aberration" />
       <div className="vignette" />
 
       {/* HERO */}
-      <div className="relative w-full flex flex-col justify-center items-center h-[30vh] sm:h-[34vh] mb-16 hero-grit text-center">
-        <div className="hero-film-lift" />
-        <p className="cinematic-line z-[2] mb-3 text-[24px] sm:text-[30px]">
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] flex flex-col justify-center items-center text-center mb-24 overflow-hidden overflow-x-hidden hero-grit">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black pointer-events-none" />
+
+        <h1 className="hero-f1 text-[34px] sm:text-[72px] font-semibold tracking-tight leading-[1.05] mb-6">
           go create good things.
-        </p>
-        <p className="z-[2] text-[13px] tracking-wide text-neutral-500">
+        </h1>
+
+        <p className="text-[13px] sm:text-[15px] tracking-[0.25em] uppercase text-neutral-500">
           Design · Editing · Visual Identity
         </p>
-      </div>
+      </section>
 
       {/* PORTFOLIO */}
       <section id="portfolio" className="scroll-mt-32">
@@ -101,15 +103,12 @@ export default function HomePage() {
         </h1>
 
         <p className="mb-16 max-w-[560px] text-[15px] text-neutral-400 leading-relaxed">
-          Cinematic pieces and visuals crafted for brands, products, and people
-          who want their story to feel considered and intentional.
+          Visuals crafted for brands, products, and people
+          who want their story to feel considered and authentic.
         </p>
 
-        {/* FEATURED VIDEO */}
         <a
           href="/portfolio/agif-origins-story"
-          target="_blank"
-          rel="noopener noreferrer"
           className="block mb-14 group"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center border border-white/10 rounded-md p-6 group-hover:border-white/25 transition">
@@ -141,7 +140,6 @@ export default function HomePage() {
           </div>
         </a>
 
-        {/* SCROLLING RAIL */}
         <div className="relative w-full overflow-hidden hide-scrollbar">
           <div className="rail-motion flex gap-16 py-2">
             {loop.map((project, i) => (
@@ -153,12 +151,14 @@ export default function HomePage() {
               >
                 <div className="h-[300px] w-full overflow-hidden rounded-sm border border-white/5 group-hover:border-white/20 transition">
                   <Image
-                    src={project.img}
-                    alt={project.title}
-                    width={520}
-                    height={600}
-                    className="h-full w-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-[1.04]"
-                  />
+  src={project.img}
+  alt={project.title}
+  width={520}
+  height={600}
+  loading="lazy"
+  sizes="(max-width: 768px) 70vw, 260px"
+  className="h-full w-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-[1.04]"
+/>
                 </div>
 
                 <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-500 mt-4">
@@ -177,10 +177,7 @@ export default function HomePage() {
       </section>
 
       {/* SERVICES */}
-      <section
-        id="services"
-        className="mt-48 text-center scroll-mt-32"
-      >
+      <section id="services" className="mt-48 text-center scroll-mt-32">
         <h2 className="text-[42px] sm:text-[56px] font-semibold tracking-tight bg-gradient-to-r from-white via-neutral-300 to-neutral-500 bg-clip-text text-transparent">
           Services
         </h2>
@@ -251,6 +248,7 @@ export default function HomePage() {
       <footer className="mt-32 text-center text-[12px] text-neutral-500">
         © 2026 Brady Hudson
       </footer>
+
     </main>
   );
 }

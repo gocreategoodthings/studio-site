@@ -16,9 +16,10 @@ export default function Contact() {
         </h1>
 
         <p className="max-w-xl text-sm leading-relaxed text-neutral-400">
-          I help with drone videography & photography, edit-only projects, and
-          branding & design. Tell me what you need and when you need it, and
-          I&apos;ll follow up with next steps.
+          I focus on design, visual identity, and video editing — from
+          full-scale creative direction to edit-only projects. Share what
+          you&apos;re building and your timeline, and I&apos;ll follow up with
+          next steps.
         </p>
       </header>
 
@@ -53,7 +54,7 @@ export default function Contact() {
           </label>
           <input
             type="text"
-            placeholder="Drone shoot, edit-only, branding, or something else."
+            placeholder="Design, branding, video editing, or something else."
             className="w-full rounded-xl border border-neutral-800 bg-neutral-950/60 px-3 py-2 text-sm outline-none placeholder:text-neutral-600 focus:border-neutral-500"
           />
         </div>
@@ -64,7 +65,7 @@ export default function Contact() {
           </label>
           <textarea
             rows={4}
-            placeholder="Timeline, location, deliverables, links, and anything else that would be helpful."
+            placeholder="Timeline, deliverables, references, links — anything helpful."
             className="w-full rounded-xl border border-neutral-800 bg-neutral-950/60 px-3 py-2 text-sm outline-none placeholder:text-neutral-600 focus:border-neutral-500"
           />
         </div>
@@ -88,16 +89,6 @@ export default function Contact() {
             gocreatgoodthings@gmail.com
           </a>
           .
-        </p>
-
-        <p>
-          Want to see more work?{" "}
-          <Link
-            href="/portfolio"
-            className="underline underline-offset-4 text-neutral-300 hover:text-white"
-          >
-            View portfolio →
-          </Link>
         </p>
       </div>
 
