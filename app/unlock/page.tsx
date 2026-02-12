@@ -6,14 +6,15 @@ export default function UnlockPage() {
   const [key, setKey] = useState("");
 
   const submit = () => {
-    console.log("PUBLIC KEY:", process.env.NEXT_PUBLIC_SITE_KEY);
-    if (key === process.env.NEXT_PUBLIC_SITE_KEY) {
+  console.log("ENV KEY:", process.env.NEXT_PUBLIC_SITE_KEY);
+
+  if (key === process.env.NEXT_PUBLIC_SITE_KEY) {
     document.cookie = "site_access=granted; path=/;";
-      window.location.href = "/";
-    } else {
-      alert("Incorrect key");
-    }
-  };
+    window.location.href = "/";
+  } else {
+    alert("Incorrect key");
+  }
+};
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-black text-white px-6">
