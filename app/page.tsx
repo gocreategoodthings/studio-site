@@ -125,13 +125,13 @@ export default function HomePage() {
 
             <div>
               <p className="text-[11px] uppercase tracking-[0.15em] text-neutral-500">
-                Featured · 2025
+                Featured · 2026
               </p>
               <h3 className="mt-2 text-[28px] font-semibold leading-tight">
                 AGIF Origins Story
               </h3>
               <p className="text-[14px] text-neutral-400 mt-3">
-                Film · Edit · Story
+                Production · Edit · Story
               </p>
               <span className="mt-6 inline-flex items-center gap-2 text-[12px] uppercase tracking-wide text-neutral-300 group-hover:text-white transition">
                 Watch ↗
