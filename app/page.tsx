@@ -9,6 +9,13 @@ import { useEffect, useRef } from "react";
 --------------------------------------------- */
 const projects = [
   {
+    title: "Ashton Gray – Commercial Real Estate Marketing",
+    role: "Brand · Web · Content",
+    slug: "ashton-gray",
+    img: "/images/ashton-gray-cover.jpg",
+    year: "2025",
+  },
+  {
     title: "Commercial Real Estate Drone Reel",
     role: "Drone Photography · Videography · Edit · Color",
     slug: "agok-classen-norman",
@@ -41,13 +48,6 @@ const projects = [
     role: "Poster Illustration · Graphic Design",
     slug: "aces-for-education",
     img: "/images/aces-for-education-photo.jpg",
-    year: "2025",
-  },
-  {
-    title: "Ashton Gray – Commercial Real Estate Marketing",
-    role: "Brand · Web · Content",
-    slug: "ashton-gray",
-    img: "/images/ashton-gray-cover.jpg",
     year: "2025",
   },
 ];
