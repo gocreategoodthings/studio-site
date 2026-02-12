@@ -9,8 +9,7 @@ const submit = () => {
   const envKey = (process.env.NEXT_PUBLIC_GCGTSITEKEY ?? "").trim();
   const typed = key.trim();
 
-  console.log("ENV KEY:", envKey);
-
+  
   if (!envKey) {
     alert("Site key is NOT loading (envKey is empty).");
     return;
