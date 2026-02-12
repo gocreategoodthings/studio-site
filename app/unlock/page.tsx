@@ -5,10 +5,18 @@ import { useState } from "react";
 export default function UnlockPage() {
   const [key, setKey] = useState("");
 
-  const submit = () => {
-  console.log("ENV KEY:", process.env.NEXT_PUBLIC_SITE_KEY);
+const submit = () => {
+  const envKey = (process.env.NEXT_PUBLIC_GCGTSITEKEY ?? "").trim();
+  const typed = key.trim();
 
-  if (key === process.env.NEXT_PUBLIC_SITE_KEY) {
+  console.log("ENV KEY:", envKey);
+
+  if (!envKey) {
+    alert("Site key is NOT loading (envKey is empty).");
+    return;
+  }
+
+  if (typed === envKey) {
     document.cookie = "site_access=granted; path=/;";
     window.location.href = "/";
   } else {
