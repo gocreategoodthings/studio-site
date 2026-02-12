@@ -22,10 +22,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${figtree.className} bg-black text-white pt-20`}>
-        <SmoothScroll>
-          <HeaderBar />
-          {children}
-        </SmoothScroll>
+        {/* Mobile Block - Shows message on screens smaller than 768px */}
+        <div className="block md:hidden fixed inset-0 bg-black z-50 flex items-center justify-center px-6 text-center">
+          <div>
+            <h1 className="text-2xl font-semibold mb-4">Desktop Only</h1>
+            <p className="text-neutral-400">
+              This site is currently optimized for desktop viewing only.
+              <br />
+              Please visit on a desktop or laptop computer.
+            </p>
+          </div>
+        </div>
+
+        {/* Desktop Content - Hidden on mobile, visible on desktop */}
+        <div className="hidden md:block">
+          <SmoothScroll>
+            <HeaderBar />
+            {children}
+          </SmoothScroll>
+        </div>
       </body>
     </html>
   );
