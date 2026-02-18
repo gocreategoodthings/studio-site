@@ -1,24 +1,19 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
-  const [isMobile, setIsMobile] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    // Check if mobile on mount
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    
-    // Only load Lenis on desktop for better mobile performance
+    let lenis: any;
+
     if (window.innerWidth >= 768) {
       import("@studio-freight/lenis").then(({ default: Lenis }) => {
-        const lenis = new Lenis({
+        lenis = new Lenis({
           duration: 0.65,
-          easing: t => 1 - Math.pow(1 - t, 4),
+          easing: (t: number) => 1 - Math.pow(1 - t, 4),
           smoothWheel: true,
           wheelMultiplier: 1.2,
           touchMultiplier: 1.1,
@@ -31,13 +26,15 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
 
         requestAnimationFrame(raf);
 
-        // Cleanup
-        return () => {
-          lenis.destroy();
-        };
+        // 👇 reset scroll on route change
+        lenis.scrollTo(0, { immediate: true });
       });
     }
-  }, []);
+
+    return () => {
+      if (lenis) lenis.destroy();
+    };
+  }, [pathname]); // 👈 key change
 
   return <>{children}</>;
 }
