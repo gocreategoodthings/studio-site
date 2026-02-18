@@ -107,7 +107,7 @@ export default function HomePage() {
           who want their story to feel considered and authentic.
         </p>
 
-        <a
+        <Link
           href="/portfolio/agif-origins-story"
           className="block mb-14 group"
         >
@@ -138,7 +138,7 @@ export default function HomePage() {
               </span>
             </div>
           </div>
-        </a>
+        </Link>
 
         <div className="relative w-full overflow-hidden hide-scrollbar">
           <div className="rail-motion flex gap-16 py-2">
@@ -151,14 +151,14 @@ export default function HomePage() {
               >
                 <div className="h-[300px] w-full overflow-hidden rounded-sm border border-white/5 group-hover:border-white/20 transition">
                   <Image
-  src={project.img}
-  alt={project.title}
-  width={520}
-  height={600}
-  loading="lazy"
-  sizes="(max-width: 768px) 70vw, 260px"
-  className="h-full w-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-[1.04]"
-/>
+                    src={project.img}
+                    alt={project.title}
+                    width={520}
+                    height={600}
+                    loading="lazy"
+                    sizes="(max-width: 768px) 70vw, 260px"
+                    className="h-full w-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-[1.04]"
+                  />
                 </div>
 
                 <p className="text-[11px] uppercase tracking-[0.12em] text-neutral-500 mt-4">
@@ -244,7 +244,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer className="mt-32 text-center text-[12px] text-neutral-500">
         © 2026 Brady Hudson
       </footer>
