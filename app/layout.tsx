@@ -12,6 +12,10 @@ const figtree = Figtree({
 export const metadata: Metadata = {
   title: "Brady Hudson",
   description: "Design · Editing · Photo/Video",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({
