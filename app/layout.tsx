@@ -16,6 +16,25 @@ export const metadata: Metadata = {
     index: false,
     follow: false,
   },
+  openGraph: {
+    title: "Brady Hudson",
+    description: "Design · Editing · Photo/Video",
+    url: "https://gocreategoodthings.com",
+    siteName: "Brady Hudson",
+    images: [
+      {
+        url: "/images/about-portrait.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/about-portrait.jpg"],
+  },
 };
 
 export default function RootLayout({
