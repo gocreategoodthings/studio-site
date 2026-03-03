@@ -1,15 +1,14 @@
 @import "tailwindcss";
 
-@import "tailwindcss";
+/* ---------------------------------------------------------
+   CORE LAYOUT SAFETY
+--------------------------------------------------------- */
 
-/* ✅ CRITICAL: Prevent horizontal scroll on mobile */
 html, body {
   overflow-x: hidden;
   width: 100%;
   position: relative;
 }
-
-/* ... rest of your CSS ... */
 
 /* Theme */
 :root {
@@ -27,7 +26,45 @@ html {
   scroll-snap-type: y proximity;
 }
 
-/* Reveal Animation */
+/* ---------------------------------------------------------
+   CINEMATIC BACKGROUND SYSTEM (NEW FOUNDATION)
+--------------------------------------------------------- */
+
+.cinematic-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+/* Directional light falloff */
+.cinematic-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 30% 20%,
+    rgba(255, 255, 255, 0.06),
+    transparent 60%
+  );
+}
+
+/* Subtle topographic contour overlay */
+.cinematic-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background-image: url("/images/topo-lines.svg");
+  background-size: 900px;
+  background-repeat: repeat;
+}
+
+/* ---------------------------------------------------------
+   REVEAL ANIMATIONS
+--------------------------------------------------------- */
+
 .reveal-item {
   opacity: 0;
   transform: translateY(35px);
@@ -42,7 +79,10 @@ html {
   transform: translateY(0) !important;
 }
 
-/* Scrollbar */
+/* ---------------------------------------------------------
+   SCROLLBAR
+--------------------------------------------------------- */
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -51,11 +91,15 @@ html {
   scrollbar-width: none;
 }
 
-/* Marquee */
+/* ---------------------------------------------------------
+   MARQUEE
+--------------------------------------------------------- */
+
 @keyframes rail-marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
 .rail-motion {
   width: max-content;
   animation: rail-marquee 90s linear infinite;
@@ -70,7 +114,10 @@ html {
   }
 }
 
-/* Services Reveal */
+/* ---------------------------------------------------------
+   SERVICES REVEAL
+--------------------------------------------------------- */
+
 .service-item {
   opacity: 0;
   transform: translateY(12px);
@@ -85,7 +132,6 @@ html {
   filter: blur(0) !important;
 }
 
-/* underline */
 .service-item::after {
   content: "";
   position: absolute;
@@ -106,11 +152,9 @@ html {
 }
 
 /* ---------------------------------------------------------
-   GLOBAL GRITTY B/W VINTAGE FILM EFFECTS
-   ✅ OPTIMIZED: Disabled on mobile for better performance
+   GLOBAL FILM EFFECTS
 --------------------------------------------------------- */
 
-/* Main Grain Overlay */
 .bw-grain {
   position: fixed;
   inset: 0;
@@ -133,7 +177,6 @@ html {
   100% { transform: translate(0, 0) scale(1); }
 }
 
-/* Horizontal Noise Streaks */
 .horizontal-noise {
   position: fixed;
   inset: 0;
@@ -156,7 +199,6 @@ html {
   100% { opacity: 0.18; }
 }
 
-/* Chromatic offset */
 .chromatic-aberration {
   position: fixed;
   inset: 0;
@@ -165,12 +207,10 @@ html {
   mix-blend-mode: screen;
   opacity: 0.08;
   filter: blur(1px);
-  background:
-    url("/images/grain.png") center/cover no-repeat;
+  background: url("/images/grain.png") center/cover no-repeat;
   transform: translate(1px, -1px);
 }
 
-/* Strong Vignette */
 .vignette {
   position: fixed;
   inset: 0;
@@ -184,106 +224,8 @@ html {
 }
 
 /* ---------------------------------------------------------
-   HERO: GRITTY FILM LIFT (VERTICAL GRAIN RISE)
+   HERO ENTRY
 --------------------------------------------------------- */
-
-.hero-grit {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-film-lift {
-  position: absolute;
-  inset: 0;
-  background-image: url("/images/grain.png");
-  background-size: cover;
-  opacity: 0.18;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 1;
-  animation:
-    heroGrainRise 6s linear infinite,
-    heroGrainFlicker 0.35s infinite steps(2);
-}
-
-@keyframes heroGrainRise {
-  0% { transform: translateY(20px); }
-  100% { transform: translateY(-40px); }
-}
-
-@keyframes heroGrainFlicker {
-  0% { opacity: 0.16; }
-  50% { opacity: 0.22; }
-  100% { opacity: 0.14; }
-}
-
-/* Parallax */
-.parallax {
-  transform: translateZ(0);
-  perspective: 1200px;
-}
-
-.footer-link {
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  opacity: 0.55;
-}
-
-.footer-link:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-  color: white;
-}
-
-/* ----------------------------------------------
-   CINEMATIC HERO LINE
----------------------------------------------- */
-
-.cinematic-line {
-  font-size: 26px;
-  font-weight: 300;
-  color: #bfbfbf;
-  opacity: 0;
-  animation: cineSoft 1.4s ease-out forwards;
-  transform: translateY(6px);
-  letter-spacing: .5px;
-}
-
-.cinematic-line {
-  animation-delay: .15s;
-}
-
-@keyframes cineSoft {
-  0%   { opacity: 0; transform: translateY(10px); }
-  60%  { opacity: .8; }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-.footer-icon {
-  opacity: 0.55;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.footer-icon:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-}
-
-.project-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .8s ease-out, transform .8s ease-out;
-}
-
-.project-reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.backdrop-glass {
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
 
 .hero-f1 {
   opacity: 0;
@@ -301,21 +243,22 @@ html {
   }
 }
 
-/* ✅ MOBILE OPTIMIZATIONS - Disable heavy effects on mobile for 40-50% faster load */
+/* ---------------------------------------------------------
+   MOBILE PERFORMANCE OPTIMIZATION
+--------------------------------------------------------- */
+
 @media (max-width: 768px) {
   .bw-grain,
   .horizontal-noise,
   .chromatic-aberration,
-  .vignette,
-  .hero-film-lift {
+  .vignette {
     display: none;
   }
-  
-  /* Simplify mobile animations */
+
   .hero-f1 {
     animation: f1EntryMobile 0.5s ease-out forwards;
   }
-  
+
   @keyframes f1EntryMobile {
     to {
       opacity: 1;
@@ -323,14 +266,16 @@ html {
       filter: none;
     }
   }
-  
-  /* Reduce transition times on mobile */
+
   .reveal-item {
     transition-duration: 0.5s;
   }
 }
 
-/* ✅ Accessibility: Respect user preferences for reduced motion */
+/* ---------------------------------------------------------
+   ACCESSIBILITY
+--------------------------------------------------------- */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -339,7 +284,7 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .rail-motion {
     animation: none;
   }
