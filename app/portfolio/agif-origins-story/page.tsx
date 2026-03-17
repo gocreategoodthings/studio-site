@@ -14,18 +14,28 @@ export default function AGIFOriginsStory() {
           AGIF Origins Story
         </h1>
 
-        <p className="text-neutral-400 text-[16px] leading-relaxed">
-          Part I of a cinematic brand series supporting the public launch of
+        <p className="text-neutral-400 text-[16px] leading-relaxed mb-8">
+          Part I of a brand series supporting the public launch of
           Ashton Gray Capital. I provided creative direction to the production
           crew, structured the interview narrative, prepared all interview
           questions, and completed the full edit and finishing.
         </p>
+
+        {/* Primary Live Site CTA */}
+        <a
+          href="https://ashtongraycapital.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block text-sm uppercase tracking-[0.14em] border-b border-white/40 hover:border-white transition"
+        >
+          Visit Live Website ↗
+        </a>
       </div>
 
       {/* Vimeo Video */}
       <div className="relative w-full aspect-video mb-20 rounded-md overflow-hidden border border-white/10">
         <iframe
-          src="https://player.vimeo.com/video/1164240185?badge=0&autopause=0&player_id=0&app_id=58479"
+          src="https://player.vimeo.com/video/1174215419?badge=0&autopause=0&player_id=0&app_id=58479"
           className="w-full h-full"
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
@@ -46,15 +56,10 @@ export default function AGIFOriginsStory() {
           </p>
 
           <p>
-            In post-production, I shaped the narrative arc, refined pacing,
-            balanced tonal contrast, integrated brand visuals, and delivered
-            the final cinematic cut.
-          </p>
-
-          <p>
-            This project reflects my ability to collaborate alongside creative
-            production teams while leading strategic brand storytelling and
-            editorial execution.
+            This clip is the first from a broader series that will be used across
+            multiple pieces of content, including social media. My work focused
+            on helping shape the narrative and introducing the Ashton Gray
+            Capital brand.
           </p>
         </div>
 
@@ -73,7 +78,7 @@ export default function AGIFOriginsStory() {
               href="https://ashtongraycapital.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:underline"
+              className="inline-block mt-1 text-white uppercase tracking-[0.12em] border-b border-white/40 hover:border-white transition"
             >
               ashtongraycapital.com ↗
             </a>
