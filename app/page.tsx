@@ -78,7 +78,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="mx-auto max-w-[1500px] px-4 sm:px-6 pb-40 pt-16 sm:pt-20 text-white relative overflow-hidden">
+    <main className="mx-auto max-w-[1500px] px-4 sm:px-6 pb-32 sm:pb-40 pt-12 sm:pt-16 text-white relative overflow-hidden">
       
       <div className="bw-grain" />
       <div className="horizontal-noise" />
@@ -86,23 +86,23 @@ export default function HomePage() {
       <div className="vignette" />
 
       {/* HERO */}
-      <section className="relative min-h-[60vh] sm:min-h-[70vh] flex flex-col justify-center items-center text-center mb-24 overflow-hidden overflow-x-hidden hero-grit">
+      <section className="relative min-h-[55vh] sm:min-h-[70vh] flex flex-col justify-center items-center text-center mb-20 sm:mb-24 overflow-hidden overflow-x-hidden hero-grit">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black pointer-events-none" />
-        <h1 className="hero-f1 text-[34px] sm:text-[72px] font-semibold tracking-tight leading-[1.05] mb-6">
+        <h1 className="hero-f1 text-[30px] sm:text-[72px] font-semibold tracking-tight leading-[1.1] sm:leading-[1.05] mb-5 sm:mb-6">
           go create good things.
         </h1>
-        <p className="text-[13px] sm:text-[15px] tracking-[0.25em] uppercase text-neutral-500">
+        <p className="text-[12px] sm:text-[15px] tracking-[0.25em] uppercase text-neutral-500">
           Design · Editing · Visual Identity
         </p>
       </section>
 
       {/* PORTFOLIO */}
-      <section id="portfolio" className="scroll-mt-32">
-        <h1 className="mb-6 text-[40px] sm:text-[52px] font-semibold tracking-tight bg-gradient-to-r from-white via-neutral-300 to-neutral-500 bg-clip-text text-transparent">
+      <section id="portfolio" className="scroll-mt-24 sm:scroll-mt-32">
+        <h1 className="mb-5 sm:mb-6 text-[32px] sm:text-[52px] font-semibold tracking-tight bg-gradient-to-r from-white via-neutral-300 to-neutral-500 bg-clip-text text-transparent">
           Selected Work
         </h1>
 
-        <p className="mb-16 max-w-[560px] text-[15px] text-neutral-400 leading-relaxed">
+        <p className="mb-12 sm:mb-16 max-w-[560px] text-[14px] sm:text-[15px] text-neutral-400 leading-relaxed">
           Visuals crafted for brands, products, and people
           who want their story to feel considered and authentic.
         </p>
@@ -110,10 +110,10 @@ export default function HomePage() {
         {/* FEATURED */}
         <Link
           href="/portfolio/agif-origins-story"
-          className="block mb-20 group reveal-item"
+          className="block mb-16 sm:mb-20 group reveal-item"
           ref={el => { itemRefs.current[0] = el; }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center border border-white/10 rounded-md p-8 group-hover:border-white/25 transition">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center border border-white/10 rounded-md p-5 sm:p-8 group-hover:border-white/25 transition">
             <div className="relative w-full aspect-[16/9] overflow-hidden rounded-sm border border-white/5">
               <Image
                 src="/images/agif-origins-thumb.jpg"
@@ -126,16 +126,16 @@ export default function HomePage() {
             </div>
 
             <div>
-              <p className="text-[11px] uppercase tracking-[0.15em] text-neutral-500">
+              <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-neutral-500">
                 Featured · 2026
               </p>
-              <h3 className="mt-2 text-[32px] font-semibold leading-tight">
+              <h3 className="mt-2 text-[24px] sm:text-[32px] font-semibold leading-tight">
                 AGIF Origins Story
               </h3>
-              <p className="text-[14px] text-neutral-400 mt-3">
+              <p className="text-[13px] sm:text-[14px] text-neutral-400 mt-3">
                 Production · Edit · Story
               </p>
-              <span className="mt-6 inline-flex items-center gap-2 text-[12px] uppercase tracking-wide text-neutral-300 group-hover:text-white transition">
+              <span className="mt-5 sm:mt-6 inline-flex items-center gap-2 text-[11px] sm:text-[12px] uppercase tracking-wide text-neutral-300 group-hover:text-white transition">
                 Watch ↗
               </span>
             </div>
@@ -143,7 +143,7 @@ export default function HomePage() {
         </Link>
 
         {/* PROJECTS */}
-        <div className="space-y-16">
+        <div className="space-y-12 sm:space-y-16">
           {projects.map((project, i) => (
             <Link
               key={project.slug}
@@ -151,7 +151,7 @@ export default function HomePage() {
               ref={el => { itemRefs.current[i + 1] = el; }}
               className="block group reveal-item"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center border border-white/10 rounded-md p-8 group-hover:border-white/25 transition">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center border border-white/10 rounded-md p-5 sm:p-8 group-hover:border-white/25 transition">
                 
                 <div className="relative w-full aspect-[16/9] overflow-hidden rounded-sm border border-white/5">
                   <Image
@@ -168,16 +168,16 @@ export default function HomePage() {
                 </div>
 
                 <div>
-                  <p className="text-[11px] uppercase tracking-[0.15em] text-neutral-500">
+                  <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-neutral-500">
                     {project.year}
                   </p>
-                  <h3 className="mt-2 text-[28px] font-semibold leading-tight">
+                  <h3 className="mt-2 text-[22px] sm:text-[28px] font-semibold leading-tight">
                     {project.title}
                   </h3>
-                  <p className="text-[14px] text-neutral-400 mt-3">
+                  <p className="text-[13px] sm:text-[14px] text-neutral-400 mt-3">
                     {project.role}
                   </p>
-                  <span className="mt-6 inline-flex items-center gap-2 text-[12px] uppercase tracking-wide text-neutral-300 group-hover:text-white transition">
+                  <span className="mt-5 sm:mt-6 inline-flex items-center gap-2 text-[11px] sm:text-[12px] uppercase tracking-wide text-neutral-300 group-hover:text-white transition">
                     View ↗
                   </span>
                 </div>
@@ -189,8 +189,8 @@ export default function HomePage() {
       </section>
 
       {/* PREMIUM FOOTER */}
-      <footer className="mt-40 pb-16">
-        <div className="flex items-center justify-center gap-6 text-[12px] tracking-[0.25em] uppercase text-neutral-500">
+      <footer className="mt-32 sm:mt-40 pb-12 sm:pb-16">
+        <div className="flex items-center justify-center gap-4 sm:gap-6 text-[11px] sm:text-[12px] tracking-[0.25em] uppercase text-neutral-500">
           <div className="flex-1 h-px bg-white/10" />
           <span className="whitespace-nowrap">© 2026 Brady Hudson</span>
           <button
