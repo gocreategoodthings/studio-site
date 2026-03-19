@@ -13,7 +13,7 @@ const projects = [
     role: "Brand · Web · Content",
     slug: "ashton-gray",
     img: "/images/ashton-gray-cover.jpg",
-    year: "2025",
+    year: "2026",
   },
   {
     title: "OXIDIAN: Outdoor Gear Concept",
@@ -79,7 +79,7 @@ export default function HomePage() {
 
   return (
     <main className="mx-auto max-w-[1500px] px-4 sm:px-6 pb-32 sm:pb-40 pt-12 sm:pt-16 text-white relative overflow-hidden">
-      
+
       <div className="bw-grain" />
       <div className="horizontal-noise" />
       <div className="chromatic-aberration" />
@@ -124,7 +124,6 @@ export default function HomePage() {
                 priority
               />
             </div>
-
             <div>
               <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-neutral-500">
                 Featured · 2026
@@ -152,7 +151,6 @@ export default function HomePage() {
               className="block group reveal-item"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center border border-white/10 rounded-md p-5 sm:p-8 group-hover:border-white/25 transition">
-                
                 <div className="relative w-full aspect-[16/9] overflow-hidden rounded-sm border border-white/5">
                   <Image
                     src={project.img}
@@ -166,7 +164,6 @@ export default function HomePage() {
                     }`}
                   />
                 </div>
-
                 <div>
                   <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-neutral-500">
                     {project.year}
@@ -181,10 +178,38 @@ export default function HomePage() {
                     View ↗
                   </span>
                 </div>
-
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="scroll-mt-32 mt-32 sm:mt-40 mb-32 sm:mb-40">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center max-w-[1200px]">
+
+          {/* LEFT — TEXT */}
+          <div>
+            <h2 className="mb-8 text-sm tracking-widest text-neutral-500">ABOUT</h2>
+
+            <p className="text-[15px] sm:text-[16px] text-neutral-300 leading-relaxed mb-10">
+              I'm Brady, a designer, editor, and aerial photographer based in Oklahoma City. I believe we're made in the image of God, the <em>imago dei</em>, and that work done with real purpose reflects that. Currently the Design and Visuals Specialist at Ashton Gray Real Estate, doing freelance work through Go Create Good Things, and an FAA-certified drone pilot who cares about making things that are more than just aesthetically pleasing.
+            </p>
+
+            <a href="/contact" className="text-sm text-neutral-300 hover:text-white transition underline-offset-4 hover:underline">
+              Work together →
+            </a>
+          </div>
+
+          {/* RIGHT — PORTRAIT */}
+          <div className="flex justify-center md:justify-end">
+            <img
+              src="/images/about-portrait.jpg"
+              alt="Brady Hudson"
+              className="w-full max-w-[320px] md:max-w-[380px] rounded-xl object-cover"
+            />
+          </div>
+
         </div>
       </section>
 
