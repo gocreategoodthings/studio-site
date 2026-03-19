@@ -7,6 +7,9 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Always reset scroll on route change, handles mobile too
+    window.scrollTo(0, 0);
+
     let lenis: any;
 
     if (window.innerWidth >= 768) {
@@ -26,7 +29,6 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
 
         requestAnimationFrame(raf);
 
-        // 👇 reset scroll on route change
         lenis.scrollTo(0, { immediate: true });
       });
     }
@@ -34,7 +36,7 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     return () => {
       if (lenis) lenis.destroy();
     };
-  }, [pathname]); // 👈 key change
+  }, [pathname]);
 
   return <>{children}</>;
 }
