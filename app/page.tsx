@@ -61,8 +61,7 @@ export default function HomePage() {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("reveal-visible");
-          } else {
-            entry.target.classList.remove("reveal-visible");
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -119,7 +118,7 @@ export default function HomePage() {
                 src="/images/agif-origins-thumb.jpg"
                 alt="AGIF Origins Story"
                 fill
-                sizes="100vw"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition duration-[1200ms] ease-out group-hover:scale-[1.02]"
                 priority
               />
@@ -156,7 +155,7 @@ export default function HomePage() {
                     src={project.img}
                     alt={project.title}
                     fill
-                    sizes="100vw"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className={`transition duration-[1200ms] ease-out group-hover:scale-[1.02] ${
                       project.slug === "oxidian"
                         ? "object-cover object-[50%_75%]"
@@ -203,11 +202,15 @@ export default function HomePage() {
 
           {/* RIGHT — PORTRAIT */}
           <div className="flex justify-center md:justify-end">
-            <img
-              src="/images/about-portrait.jpg"
-              alt="Brady Hudson"
-              className="w-full max-w-[320px] md:max-w-[380px] rounded-xl object-cover"
-            />
+            <div className="relative w-full max-w-[320px] md:max-w-[380px] aspect-[3/4]">
+              <Image
+                src="/images/about-portrait.jpg"
+                alt="Brady Hudson"
+                fill
+                sizes="(max-width: 768px) 320px, 380px"
+                className="rounded-xl object-cover"
+              />
+            </div>
           </div>
 
         </div>
